@@ -74,10 +74,10 @@ public class DRONECONT : MonoBehaviour
     private float arrowKeyboardZ = 0f;
 
     // Final input values
-    private float finalVertical = 0f;
-    private float finalYaw = 0f;
-    private float finalHorizontalX = 0f;
-    private float finalHorizontalZ = 0f;
+    public float finalVertical = 0f;
+    public float finalYaw = 0f;
+    public float finalHorizontalX = 0f;
+    public float finalHorizontalZ = 0f;
 
     private bool pressedArm = false;
     public bool startupDone = false;
@@ -99,6 +99,10 @@ public class DRONECONT : MonoBehaviour
 
     void Start()
     {
+
+        //added by sumeet Wakde to get drone controller reference for tutorial manager
+        gameObject.tag = "Player";
+
         di.Enable();
 
         rb = GetComponent<Rigidbody>();
