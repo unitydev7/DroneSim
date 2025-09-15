@@ -20,9 +20,13 @@ public class TutorialManager : MonoBehaviour
 
     private bool taskInProgress = false;
 
+    private LandingPad landingPad;
+
+
     private void Start()
     {
         StartCoroutine(AssignDroneReferences());
+        landingPad= GameObject.Find("Landing_Pad").GetComponent<LandingPad>();
     }
 
     private IEnumerator AssignDroneReferences()
@@ -55,42 +59,42 @@ public class TutorialManager : MonoBehaviour
 
         switch (currentTaskIndex)
         {
-            case 0: // ✅ Arm the drone
+            case 0: //  Arm the drone
                 if (droneController.startupDone)
                     StartCoroutine(CompleteTask());
                 break;
 
-            case 1: // ✅ Ascend
+            case 1: //  Ascend
                 if (droneController.finalVertical > 0.1f)
                     StartCoroutine(CompleteTask());
                 break;
 
-            case 2: // ✅ Descend
+            case 2: //  Descend
                 if (droneController.finalVertical < -0.1f)
                     StartCoroutine(CompleteTask());
                 break;
 
-            case 3: // ✅ Pitch
+            case 3: //  Pitch
                 if (Mathf.Abs(droneController.finalHorizontalZ) > 0.1f)
                     StartCoroutine(CompleteTask());
                 break;
 
-            case 4: // ✅ Roll
+            case 4: //  Roll
                 if (Mathf.Abs(droneController.finalHorizontalX) > 0.1f)
                     StartCoroutine(CompleteTask());
                 break;
 
-            case 5: // ✅ Yaw
+            case 5: // Yaw
                 if (Mathf.Abs(droneController.finalYaw) > 0.1f)
                     StartCoroutine(CompleteTask());
                 break;
 
-            case 6: // ✅ Land (grounded again)
-                if (droneController.inGround)
+            case 6: //  Land (grounded again)
+                if (droneController.inGround && landingPad.isLanding==true)
                     StartCoroutine(CompleteTask());
                 break;
 
-            case 7: // ✅ Disarm (turn off)
+            case 7: //  Disarm (turn off)
                 if (!droneController.startupDone)
                     StartCoroutine(CompleteTask());
                 break;
@@ -110,7 +114,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("✅ Tutorial Completed!");
+            //Debug.Log(" Tutorial Completed!");
             if (tutorialUI != null)
                 Destroy(tutorialUI);
         }

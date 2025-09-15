@@ -97,6 +97,8 @@ public class DRONECONT : MonoBehaviour
     //public TextMeshProUGUI Draw;
 
 
+   
+
     void Start()
     {
 
