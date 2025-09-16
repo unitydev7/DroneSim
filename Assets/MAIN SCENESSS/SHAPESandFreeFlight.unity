@@ -441,82 +441,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6183441549176792755, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
   m_PrefabInstance: {fileID: 8269480711731375282}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &39238252
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 39238253}
-  - component: {fileID: 39238255}
-  - component: {fileID: 39238254}
-  m_Layer: 5
-  m_Name: TutorialDIalogueBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &39238253
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39238252}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1307392596}
-  m_Father: {fileID: 8269480711731375283}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000011444092, y: 305}
-  m_SizeDelta: {x: 1442, y: 71}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &39238254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39238252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4f6b4ea2771bed04792216372181974e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &39238255
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39238252}
-  m_CullTransparentMesh: 1
 --- !u!1 &62595322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5502286245082284500, guid: 12a84314fe5ec0840b4a80486e003355, type: 3}
@@ -879,7 +803,7 @@ MonoBehaviour:
   - Land in the highlighting landing zone "H"
   - "Press \"A\" ,\"S\" , \"\u2192\" & \" \u2193\" all together Arm the drone."
   taskText: {fileID: 1307392597}
-  tutorialUI: {fileID: 39238252}
+  tutorialUI: {fileID: 1105555021}
   droneController: {fileID: 0}
   joystickInput: {fileID: 0}
 --- !u!1 &117581349
@@ -6730,7 +6654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &841605745
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8439,7 +8363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1037655158
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8973,6 +8897,82 @@ Transform:
   - {fileID: 1214325807}
   m_Father: {fileID: 4167799151606401021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1105555021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1105555022}
+  - component: {fileID: 1105555024}
+  - component: {fileID: 1105555023}
+  m_Layer: 5
+  m_Name: TutorialDialogueBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1105555022
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105555021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.73, y: 0.73, z: 0.73}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1307392596}
+  m_Father: {fileID: 8269480711731375283}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: 1385.3846, y: 87.40808}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1105555023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105555021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dcc9ffc29deb4274a91057c0140a3dae, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1105555024
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105555021}
+  m_CullTransparentMesh: 1
 --- !u!1 &1106752963
 GameObject:
   m_ObjectHideFlags: 0
@@ -10792,16 +10792,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307392595}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 39238253}
+  m_Father: {fileID: 1105555022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1307392597
@@ -20317,6 +20317,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2238233934500569680, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -233
+      objectReference: {fileID: 0}
     - target: {fileID: 2340075770497139064, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -20432,6 +20436,10 @@ PrefabInstance:
     - target: {fileID: 3168891139097474555, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180568564170957505, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 271
       objectReference: {fileID: 0}
     - target: {fileID: 3280774187366473067, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -20689,6 +20697,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6099860437565593110, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -233
+      objectReference: {fileID: 0}
     - target: {fileID: 6183441549176792755, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -20791,7 +20803,7 @@ PrefabInstance:
       addedObject: {fileID: 2020716844}
     - targetCorrespondingSourceObject: {fileID: 3445997319525669369, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 39238253}
+      addedObject: {fileID: 1105555022}
     - targetCorrespondingSourceObject: {fileID: 2837014270525299362, guid: cc4068dd6dd6ef646b956de372d716cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4740016944917285417}
