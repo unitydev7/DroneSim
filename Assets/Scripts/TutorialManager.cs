@@ -22,6 +22,9 @@ public class TutorialManager : MonoBehaviour
     private bool taskInProgress = false;
     private LandingPad landingPad;
 
+    public GameObject[] checkpointColliders;
+  
+
     private void Start()
     {
         StartCoroutine(AssignDroneReferences());
@@ -29,6 +32,13 @@ public class TutorialManager : MonoBehaviour
 
         // Show first task’s GIF immediately
         ShowCurrentTaskGif();
+
+        // Deactivate all checkpoint colliders initially
+        for (int i = 0; i < checkpointColliders.Length; i++)
+        {
+            checkpointColliders[i].gameObject.SetActive(false);
+        }
+        
     }
 
     private IEnumerator AssignDroneReferences()
@@ -50,6 +60,7 @@ public class TutorialManager : MonoBehaviour
         {
             taskText.text = tutorialTasks[0];
         }
+     
     }
 
     private void Update()
@@ -60,48 +71,82 @@ public class TutorialManager : MonoBehaviour
         switch (currentTaskIndex)
         {
             case 0: // Arm the drone
+               
                 if (droneController.startupDone)
                     StartCoroutine(CompleteTask());
                 break;
 
             case 1: // Ascend
+                ActivateCheckpoint(0);
                 if (droneController.finalVertical > 0.1f)
+                {
+                    // Activate checkpoint for Ascend
                     StartCoroutine(CompleteTask());
+                }
                 break;
 
             case 2: // Descend
+                ActivateCheckpoint(1);
+               
                 if (droneController.finalVertical < -0.1f)
+                {
+                    // Activate checkpoint for Descend
+                    
                     StartCoroutine(CompleteTask());
+                }
                 break;
 
             case 3: // Pitch forward (↑)
+               
+                ActivateCheckpoint(2);  // Activate checkpoint for Pitch forward
                 if (droneController.finalHorizontalZ > 0.1f)
+                {
+                   
                     StartCoroutine(CompleteTask());
+                }
                 break;
 
             case 4: // Pitch backward (↓)
+              
+                ActivateCheckpoint(3); // Activate checkpoint for Pitch backward
                 if (droneController.finalHorizontalZ < -0.1f)
+                {
+                   
                     StartCoroutine(CompleteTask());
+                }
                 break;
 
             case 5: // Roll left (←)
+               
+                ActivateCheckpoint(4); // Activate checkpoint for Roll left
                 if (droneController.finalHorizontalX < -0.1f)
+                {
+                  
                     StartCoroutine(CompleteTask());
+                }
                 break;
 
             case 6: // Roll right (→)
+                ActivateCheckpoint(5);
                 if (droneController.finalHorizontalX > 0.1f)
+                {
                     StartCoroutine(CompleteTask());
+                }
                 break;
 
             case 7: // Yaw clockwise (A)
+                
                 if (droneController.finalYaw < -0.1f)
+                {
                     StartCoroutine(CompleteTask());
+                }
                 break;
 
             case 8: // Yaw anticlockwise (D)
                 if (droneController.finalYaw > 0.1f)
+                {
                     StartCoroutine(CompleteTask());
+                }
                 break;
 
             case 9: // Land (grounded again)
@@ -115,6 +160,14 @@ public class TutorialManager : MonoBehaviour
                 break;
         }
     }
+
+    private void ActivateCheckpoint(int index)
+    {
+        // Activate the checkpoint collider
+        checkpointColliders[index].SetActive(true);
+    }
+
+    
 
     private IEnumerator CompleteTask()
     {
