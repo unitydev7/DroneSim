@@ -4809,9 +4809,10 @@ GameObject:
   - component: {fileID: 550371411}
   - component: {fileID: 550371410}
   - component: {fileID: 550371414}
+  - component: {fileID: 550371415}
   m_Layer: 0
   m_Name: Trigger6
-  m_TagString: Checkpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4932,6 +4933,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &550371415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550371409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cfc2fff598df243a02516f9f958297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &568978261
 GameObject:
   m_ObjectHideFlags: 0
@@ -7129,9 +7142,10 @@ GameObject:
   - component: {fileID: 753228182}
   - component: {fileID: 753228181}
   - component: {fileID: 753228185}
+  - component: {fileID: 753228186}
   m_Layer: 0
   m_Name: Trigger5
-  m_TagString: Checkpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7252,6 +7266,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &753228186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753228180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cfc2fff598df243a02516f9f958297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &758018744
 GameObject:
   m_ObjectHideFlags: 0
@@ -11780,9 +11806,10 @@ GameObject:
   - component: {fileID: 1298652022}
   - component: {fileID: 1298652021}
   - component: {fileID: 1298652025}
+  - component: {fileID: 1298652026}
   m_Layer: 0
   m_Name: Trigger3
-  m_TagString: Checkpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11903,6 +11930,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1298652026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298652020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cfc2fff598df243a02516f9f958297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1300460619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12443,9 +12482,10 @@ GameObject:
   - component: {fileID: 1396485531}
   - component: {fileID: 1396485530}
   - component: {fileID: 1396485534}
+  - component: {fileID: 1396485535}
   m_Layer: 0
   m_Name: Trigger4
-  m_TagString: Checkpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12566,6 +12606,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1396485535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396485529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cfc2fff598df243a02516f9f958297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1400856373
 GameObject:
   m_ObjectHideFlags: 0
@@ -14166,9 +14218,10 @@ GameObject:
   - component: {fileID: 1732653346}
   - component: {fileID: 1732653345}
   - component: {fileID: 1732653349}
+  - component: {fileID: 1732653350}
   m_Layer: 0
   m_Name: Trigger2
-  m_TagString: Checkpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14289,6 +14342,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1732653350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732653344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cfc2fff598df243a02516f9f958297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1744622074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5820818963388252200, guid: 4eba5d7473524a04aa06d35127ce773c, type: 3}
@@ -16770,9 +16835,10 @@ GameObject:
   - component: {fileID: 2107448479}
   - component: {fileID: 2107448478}
   - component: {fileID: 2107448482}
+  - component: {fileID: 2107448483}
   m_Layer: 0
   m_Name: Trigger1
-  m_TagString: Checkpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16893,6 +16959,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2107448483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107448477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cfc2fff598df243a02516f9f958297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2111510121
 GameObject:
   m_ObjectHideFlags: 0
