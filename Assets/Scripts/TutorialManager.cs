@@ -94,7 +94,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 7: // Yaw clockwise (A)
-                if (droneController.finalYaw < -0.1f)
+                if (droneController.finalYaw < -0.1f )
                     CompleteTask();
                 break;
 
