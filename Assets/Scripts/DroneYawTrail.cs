@@ -17,8 +17,8 @@ public class DroneYawTrail : MonoBehaviour
 
     // Flag to check if it's tutorial
     private bool isTutorial = true;
-    private bool hasCompletedClockwise = false;
-    private bool hasCompletedAnticlockwise = false;
+    public bool hasCompletedClockwise = false;
+    public bool hasCompletedAnticlockwise = false;
 
     //DroneController reference
     private DRONECONT droneContoller;
@@ -42,16 +42,16 @@ public class DroneYawTrail : MonoBehaviour
     void Update()
     {
 
-        //if it's tutorial & no clockwise rotation is done
-        if(isTutorial && !hasCompletedClockwise)
+        //if it's tutorial & no anti-clockwise rotation is done
+        if(isTutorial && !hasCompletedAnticlockwise)
         {
             DrawYawHighlight();
             droneContoller.yawTorque = 1.0f;
 
         }
 
-        //if it's tutorial,clockwise rotation is done but not anticlockwise rotation
-        else if(isTutorial && hasCompletedClockwise && !hasCompletedAnticlockwise)
+        //if it's tutorial,anti-clockwise rotation is done but not clockwise rotation
+        else if(isTutorial && hasCompletedAnticlockwise && !hasCompletedClockwise)
         {
             DrawYawHighlight();
             droneContoller.yawTorque = 1.0f;
@@ -105,14 +105,14 @@ public class DroneYawTrail : MonoBehaviour
             trailAnchor.position = new Vector3(trailAnchor.position.x, transform.position.y, trailAnchor.position.z);  
         }
 
-        // Case 2: A full circle (360°) has been completed
+        // Case 2: A full circle (-360°) has been completed
         else if (Mathf.Abs(accumulatedYaw) >= 360f)
         {
 
-            if(!hasCompletedClockwise)
+            if(!hasCompletedAnticlockwise)
             {
                 // First clockwise rotation completed
-                hasCompletedClockwise = true;
+                hasCompletedAnticlockwise = true;
 
                 // Reset yaw accumulation (Change 1: Keep trail continuous, avoid breaks)
                 accumulatedYaw = 0f;
@@ -122,13 +122,13 @@ public class DroneYawTrail : MonoBehaviour
                 startY = transform.position.y; // reset base Y
 
 
-
             }
 
-            else if(hasCompletedClockwise && !hasCompletedAnticlockwise)
+            //
+            else if(hasCompletedAnticlockwise && !hasCompletedClockwise)
             {
                 // First anti-clockwise rotation completed
-                hasCompletedAnticlockwise = true;
+                hasCompletedClockwise = true;
 
                 // Reset yaw accumulation 
                 accumulatedYaw = 0f;

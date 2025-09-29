@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -18,12 +19,17 @@ public class TutorialManager : MonoBehaviour
     public DRONECONT droneController;
     public FSJoystickInput joystickInput;
 
+    private bool taskInProgress = false;
     private LandingPad landingPad;
+
     public GameObject[] checkpointColliders;
+
+    private DroneYawTrail droneYawTrail;
+
 
     private void Start()
     {
-        Invoke(nameof(AssignDroneReferences), 0.1f);
+        StartCoroutine(AssignDroneReferences());
         landingPad = GameObject.Find("Landing_Pad").GetComponent<LandingPad>();
 
         // Show first task’s GIF immediately
@@ -31,11 +37,17 @@ public class TutorialManager : MonoBehaviour
 
         // Deactivate all checkpoint colliders initially
         for (int i = 0; i < checkpointColliders.Length; i++)
+        {
             checkpointColliders[i].gameObject.SetActive(false);
+        }
+
+        droneYawTrail=GameObject.Find("Drone_01").GetComponent<DroneYawTrail>();
     }
 
-    private void AssignDroneReferences()
+    private IEnumerator AssignDroneReferences()
     {
+        yield return null; // wait one frame
+
         GameObject droneObj = GameObject.FindGameObjectWithTag("Player");
         if (droneObj != null)
         {
@@ -48,92 +60,98 @@ public class TutorialManager : MonoBehaviour
         }
 
         if (tutorialTasks.Length > 0 && taskText != null)
+        {
             taskText.text = tutorialTasks[0];
+        }
     }
 
     private void Update()
     {
         if (droneController == null) return;
-        if (currentTaskIndex >= tutorialTasks.Length) return;
+        if (currentTaskIndex >= tutorialTasks.Length || taskInProgress) return;
 
         switch (currentTaskIndex)
         {
             case 0: // Arm the drone
                 if (droneController.startupDone)
-                    CompleteTask();
+                    StartCoroutine(CompleteTask());
                 break;
 
             case 1: // Ascend
-                if (!checkpointColliders[0].activeSelf && droneController.finalVertical > 0.1f)
-                    CompleteTask();
+                if (droneController.finalVertical > 0.1f && !checkpointColliders[0].activeSelf)
+                    StartCoroutine(CompleteTask());
                 break;
 
             case 2: // Descend
-                if (!checkpointColliders[1].activeSelf && droneController.finalVertical < -0.1f)
-                    CompleteTask();
+                if (droneController.finalVertical < -0.1f  && !checkpointColliders[1].activeSelf)
+                    StartCoroutine(CompleteTask());
                 break;
 
-            case 3: // Pitch forward
-                if (!checkpointColliders[2].activeSelf && droneController.finalHorizontalZ > 0.1f)
-                    CompleteTask();
+            case 3: // Pitch forward (↑)
+                if (droneController.finalHorizontalZ > 0.1f && !checkpointColliders[2].activeSelf)
+                    StartCoroutine(CompleteTask());
                 break;
 
-            case 4: // Pitch backward
-                if (!checkpointColliders[3].activeSelf && droneController.finalHorizontalZ < -0.1f)
-                    CompleteTask();
+            case 4: // Pitch backward (↓)
+                if (droneController.finalHorizontalZ < -0.1f && !checkpointColliders[3].activeSelf)
+                    StartCoroutine(CompleteTask());
                 break;
 
-            case 5: // Roll left
-                if (!checkpointColliders[4].activeSelf && droneController.finalHorizontalX < -0.1f)
-                    CompleteTask();
+            case 5: // Roll left (←)
+                if (droneController.finalHorizontalX < -0.1f && !checkpointColliders[4].activeSelf)
+                    StartCoroutine(CompleteTask());
                 break;
 
-            case 6: // Roll right
-                if (!checkpointColliders[5].activeSelf && droneController.finalHorizontalX > 0.1f)
-                    CompleteTask();
+            case 6: // Roll right (→)
+                if (droneController.finalHorizontalX > 0.1f && !checkpointColliders[5].activeSelf)
+                    StartCoroutine(CompleteTask());
                 break;
 
             case 7: // Yaw clockwise (A)
-                if (droneController.finalYaw < -0.1f )
-                    CompleteTask();
+                if (droneController.finalYaw < -0.1f && droneYawTrail.hasCompletedAnticlockwise==true)
+                    StartCoroutine(CompleteTask());
                 break;
 
             case 8: // Yaw anticlockwise (D)
-                if (droneController.finalYaw > 0.1f)
-                    CompleteTask();
+                if (droneController.finalYaw > 0.1f && droneYawTrail.hasCompletedClockwise == true)
+                    StartCoroutine(CompleteTask());
                 break;
 
-            case 9: // Land
+            case 9: // Land (grounded again)
                 if (droneController.inGround && landingPad.isLanding)
-                    CompleteTask();
+                    StartCoroutine(CompleteTask());
                 break;
 
-            case 10: // Disarm
+            case 10: // Disarm (turn off)
                 if (!droneController.startupDone)
-                    CompleteTask();
+                    StartCoroutine(CompleteTask());
                 break;
         }
     }
+
 
     private void ActivateCheckpoint(int index)
     {
-        // Only activate if it’s currently inactive
+        // Only activate if not already active
         if (!checkpointColliders[index].activeSelf)
         {
-            // Ensure previous checkpoint is disabled first
-            if (index == 0 || !checkpointColliders[index - 1].activeSelf)
-            {
-                checkpointColliders[index].SetActive(true);
-            }
+            // Turn off all others first
+            for (int i = 0; i < checkpointColliders.Length; i++)
+                checkpointColliders[i].SetActive(false);
+
+            checkpointColliders[index].SetActive(true);
         }
     }
 
-    private void CompleteTask()
+    private IEnumerator CompleteTask()
     {
+        taskInProgress = true;
+        yield return new WaitForSeconds(0.2f);
+
         // Disable current GIF
         ShowGIFs(-1);
 
-        // Advance task
+        // Move to next task
         currentTaskIndex++;
 
         if (currentTaskIndex < tutorialTasks.Length)
@@ -141,7 +159,7 @@ public class TutorialManager : MonoBehaviour
             taskText.text = tutorialTasks[currentTaskIndex];
             ShowCurrentTaskGif();
 
-            // Activate checkpoint for new task if available
+            // --- Activate checkpoint only after task completion ---
             if (currentTaskIndex - 1 >= 0 && currentTaskIndex - 1 < checkpointColliders.Length)
             {
                 ActivateCheckpoint(currentTaskIndex - 1);
@@ -152,6 +170,8 @@ public class TutorialManager : MonoBehaviour
             if (tutorialUI != null)
                 Destroy(tutorialUI);
         }
+
+        taskInProgress = false;
     }
 
     private void ShowCurrentTaskGif()
@@ -162,21 +182,18 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-        // Special case: Landing (task 9) → no GIF
-        if (currentTaskIndex == 9)
+        if (currentTaskIndex == 9) // Landing → no GIF
         {
             ShowGIFs(-1);
             return;
         }
 
-        // Special case: Disarm (task 10) → show gif_9
-        if (currentTaskIndex == 10)
+        if (currentTaskIndex == 10) // Disarm → gif_9
         {
             ShowGIFs(9);
             return;
         }
 
-        // Normal mapping (task index = gif index)
         if (currentTaskIndex < gifs.Length)
             ShowGIFs(currentTaskIndex);
         else

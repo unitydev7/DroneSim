@@ -448,5 +448,15 @@ public class DRONECONT : MonoBehaviour
         
     }
 
-    
+    //added by Sumeet Wakde
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag=="Checkpoint")
+        {
+            // Destroy the checkpoint gameObject
+           other.gameObject.SetActive(false);
+            
+        }
+    }
 }
